@@ -20,3 +20,8 @@ svg {
   min-width: 1000px;
   min-height: 600px;
 }
+
+#legend {
+  padding-top: 10px;
+  min-height: 290px;
+}
