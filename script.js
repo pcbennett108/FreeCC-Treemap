@@ -45,6 +45,15 @@ let drawTreeMap = () => {
       } else if (category === "Family") {
         return "#00C9A7";
       }
+    })
+    .attr("data-name", (movie) => {
+      return movie["data"]["name"];
+    })
+    .attr("data-category", (movie) => {
+      return movie["data"]["category"];
+    })
+    .attr("data-value", (movie) => {
+      return movie["data"]["value"];
     });
 };
 
