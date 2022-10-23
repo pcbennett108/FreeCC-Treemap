@@ -23,7 +23,14 @@ let drawTreeMap = () => {
 
   createTreeMap(hierarchy);
 
-  let block = canvas.selectAll("g").data(movieTiles).enter().append("g");
+  let block = canvas
+    .selectAll("g")
+    .data(movieTiles)
+    .enter()
+    .append("g")
+    .attr("transform", (movie) => {
+      return "translate(" + movie["x0"] + ", " + movie["y0"] + ")";
+    });
 
   block
     .append("rect")
@@ -54,7 +61,22 @@ let drawTreeMap = () => {
     })
     .attr("data-value", (movie) => {
       return movie["data"]["value"];
+    })
+    .attr("width", (movie) => {
+      return movie["x1"] - movie["x0"];
+    })
+    .attr("height", (movie) => {
+      return movie["y1"] - movie["y0"];
     });
+
+  block
+    .append("text")
+    .style("font-size", "10px")
+    .text((movie) => {
+      return movie["data"]["name"];
+    })
+    .attr("x", 5)
+    .attr("y", 20);
 };
 
 d3.json(movieDataUrl).then((data, error) => {
