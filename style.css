@@ -25,3 +25,9 @@ svg {
   padding-top: 10px;
   min-height: 290px;
 }
+
+#tooltip {
+  visibility: hidden;
+  height: auto;
+  width: auto;
+}

@@ -4,6 +4,7 @@ let movieDataUrl =
 let movieData;
 
 let canvas = d3.select("#canvas");
+let tooltip = d3.select("#tooltip");
 
 let drawTreeMap = () => {
   let hierarchy = d3
@@ -67,6 +68,19 @@ let drawTreeMap = () => {
     })
     .attr("height", (movie) => {
       return movie["y1"] - movie["y0"];
+    })
+    .on("mouseover", (movie) => {
+      tooltip.transition().style("visibility", "visible");
+
+      let revenue = movie["data"]["value"]
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      tooltip.html("$ " + revenue + " --- " + movie["data"]["name"]);
+      tooltip.attr("data-value", movie["data"]["value"]);
+    })
+    .on("mouseout", (movie) => {
+      tooltip.transition().style("visibility", "hidden");
     });
 
   block
