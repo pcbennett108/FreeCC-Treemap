@@ -75,11 +75,11 @@ g {
 }
 
 #title {
-  font-size: 28px;
+  font-size: 36px;
   color: #1d1f20;
   text-transform: capitalize;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 #container {
