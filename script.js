@@ -76,7 +76,7 @@ let drawTreeMap = () => {
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-      tooltip.html("$ " + revenue + " --- " + movie["data"]["name"]);
+      tooltip.html("$ " + revenue + "<hr />" + movie["data"]["name"]);
       tooltip.attr("data-value", movie["data"]["value"]);
     })
     .on("mouseout", (movie) => {
